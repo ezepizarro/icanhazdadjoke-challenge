@@ -6,6 +6,7 @@ using AutoMapper;
 using ICHDadJoke.Core.Interfaces;
 using ICHDadJoke.Core.Mappings;
 using ICHDadJoke.Core.Services;
+using ICHDadJoke.Infrastructure.Clients;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -48,6 +49,8 @@ namespace ICHDadJoke.API
             services.AddSingleton(mapper);
 
             // DI
+            services.AddHttpClient();
+            services.AddScoped<IJokeDataClient, JokeDataClient>();
             services.AddTransient<IJokeService, JokeService>();
         }
 

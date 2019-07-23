@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ICHDadJoke.Core\ICHDadJoke.Core.csproj" />
+    <ProjectReference Include="..\ICHDadJoke.Infrastructure\ICHDadJoke.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
