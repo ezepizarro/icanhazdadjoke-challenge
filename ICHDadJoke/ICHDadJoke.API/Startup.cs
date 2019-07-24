@@ -33,6 +33,16 @@ namespace ICHDadJoke.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            // CORS
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
+            });
+
             // Swagger
             services.AddSwaggerGen(c =>
             {
@@ -47,6 +57,14 @@ namespace ICHDadJoke.API
 
             IMapper mapper = mappingConfig.CreateMapper();
             services.AddSingleton(mapper);
+
+
+            // HttpClient
+            services.AddHttpClient("icanhazdadjoke", c =>
+            {
+                c.BaseAddress = new Uri("https://icanhazdadjoke.com/");
+                c.DefaultRequestHeaders.Add("Accept", "application/json");
+            });
 
             // DI
             services.AddHttpClient();
@@ -75,6 +93,7 @@ namespace ICHDadJoke.API
             });
 
             app.UseHttpsRedirection();
+            app.UseCors("CorsPolicy");
             app.UseMvc();
         }
     }

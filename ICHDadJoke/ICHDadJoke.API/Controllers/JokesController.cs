@@ -23,16 +23,17 @@ namespace ICHDadJoke.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetRandomJoke()
+        public async Task<ActionResult> GetRandomJokeAsync()
         {
             var joke = await _jokeService.GetRandomJokeAsync();
             return Ok(joke);
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult> GetJokesList()
-        //{
-        //    return Ok();
-        //}
+        [HttpGet("Search")]
+        public async Task<ActionResult> SearchAsync([FromQuery] string term)
+        {
+            var jokes = await _jokeService.SearchAsync(term);
+            return Ok(jokes);
+        }
     }
 }

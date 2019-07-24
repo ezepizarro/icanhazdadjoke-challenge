@@ -9,5 +9,6 @@ namespace ICHDadJoke.Core.Interfaces
     public interface IJokeDataClient
     {
         Task<JokeModel> OnGet();
+        Task<SearchResultJokeModel> OnSearch(string term, int limit = 30);
     }
 }

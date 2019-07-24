@@ -9,5 +9,6 @@ namespace ICHDadJoke.Core.Interfaces
     public interface IJokeService
     {
         Task<JokeModel> GetRandomJokeAsync();
+        Task<SearchJokeModel> SearchAsync(string term);
     }
 }
