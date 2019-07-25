@@ -16,4 +16,9 @@ export class JokeService {
            catchError(error => of(`Bad request: ${error}`))
         );
   }
+
+  public searchJokes(term) {
+    return this.httpClient.get('https://localhost:44388/api/Jokes/Search?term=' + term);
+  }
+
 }

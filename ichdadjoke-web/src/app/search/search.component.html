@@ -1,1 +1,57 @@
-<p>search works!</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+    <div class="example-container">
+    <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Search for jokes</mat-label>
+          <input matInput placeholder="dad" formControlName="searchInput">
+          <mat-icon matSuffix>search</mat-icon>
+          <mat-hint>Hint</mat-hint>
+        </mat-form-field>
+      </p>
+</div>
+</form>
+<div *ngIf="jokes.shortJokes.length > 0">
+  <mat-accordion class="example-headers-align">
+  <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Short Jokes ({{jokes.shortJokes.length}})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+        <div *ngFor="let joke of jokes.shortJokes">
+          <mat-list-item><p [innerHTML]="highlight(joke.joke, jokes.term)"></p></mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+    </mat-list>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Medium Jokes ({{jokes.mediumJokes.length}})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+        <div *ngFor="let joke of jokes.mediumJokes">
+          <mat-list-item><p [innerHTML]="highlight(joke.joke, jokes.term)"></p></mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+    </mat-list>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Long Jokes ({{jokes.longJokes.length}})
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-list>
+        <div *ngFor="let joke of jokes.longJokes">
+          <mat-list-item><p [innerHTML]="highlight(joke.joke, jokes.term)"></p></mat-list-item>
+          <mat-divider></mat-divider>
+        </div>
+    </mat-list>
+  </mat-expansion-panel>
+</mat-accordion>
+</div>
