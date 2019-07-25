@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JokeService } from '../joke-service.service';
+import Joke from '../Joke';
 
 @Component({
   selector: 'app-jokes',
@@ -7,13 +8,13 @@ import { JokeService } from '../joke-service.service';
   styleUrls: ['./jokes.component.css']
 })
 export class JokesComponent implements OnInit {
-  response;
+  response: Joke = new Joke();
 
   constructor(private jokeService: JokeService) { }
 
   ngOnInit() {
     this.jokeService.getRandomJoke()
-    .subscribe((data) => {
+    .subscribe((data: Joke) => {
       console.log(data);
       this.response = data;
     });
