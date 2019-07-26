@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { JokeService } from '../joke-service.service';
 import Joke from '../Joke';
 import * as signalR from '@aspnet/signalr';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -24,7 +25,7 @@ export class JokesComponent implements OnInit {
 
     const connection = new signalR.HubConnectionBuilder()
       .configureLogging(signalR.LogLevel.Information)
-      .withUrl('https://localhost:44388/joke')
+      .withUrl(environment.apiSignalREndpoint)
       .build();
 
     connection.start().then(() => {

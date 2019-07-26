@@ -32,6 +32,8 @@ namespace ICHDadJoke.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string origins = Configuration["Origins:url"];
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // SignalR
@@ -45,7 +47,7 @@ namespace ICHDadJoke.API
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
-                    .WithOrigins("http://localhost:4200"));
+                    .WithOrigins(origins));
             });
 
             // Swagger
