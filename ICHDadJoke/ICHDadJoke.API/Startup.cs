@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using ICHDadJoke.API.Hubs;
 using ICHDadJoke.Core.Interfaces;
 using ICHDadJoke.Core.Mappings;
 using ICHDadJoke.Core.Services;
@@ -33,15 +34,18 @@ namespace ICHDadJoke.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
+            // SignalR
+            services.AddSignalR();
+
             // CORS
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
                     builder => builder
-                    .AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader()
-                    .AllowCredentials());
+                    .AllowCredentials()
+                    .WithOrigins("http://localhost:4200"));
             });
 
             // Swagger
@@ -69,8 +73,10 @@ namespace ICHDadJoke.API
 
             // DI
             services.AddHttpClient();
+            services.AddHostedService<Worker>();
             services.AddScoped<IJokeDataClient, JokeDataClient>();
             services.AddTransient<IJokeService, JokeService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -95,6 +101,10 @@ namespace ICHDadJoke.API
 
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<JokeHub>("/joke");
+            });
             app.UseMvc();
         }
     }

@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
+using ICHDadJoke.API.Hubs;
 using ICHDadJoke.Core.Interfaces;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace ICHDadJoke.API.Controllers
 {
@@ -15,11 +15,14 @@ namespace ICHDadJoke.API.Controllers
     {
         private readonly IJokeService _jokeService;
         private readonly IMapper _mapper;
+        private IHubContext<JokeHub, IJokeHub> _hubContext;
+        private Timer _timer;
 
-        public JokesController(IJokeService jokeService, IMapper mapper)
+        public JokesController(IJokeService jokeService, IMapper mapper, IHubContext<JokeHub, IJokeHub> hubContext)
         {
             _jokeService = jokeService;
             _mapper = mapper;
+            _hubContext = hubContext;
         }
 
         [HttpGet]
