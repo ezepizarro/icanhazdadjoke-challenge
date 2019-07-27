@@ -1,6 +1,7 @@
 # I can haz dad joke - challenge
-An api to search and get random jokes 
-A web to display and search jokes
+An api to search and get random jokes.  
+A web to display and search jokes.
+
 
 ## Stack
 - .Net Core 2.2.
@@ -23,5 +24,5 @@ A web to display and search jokes
 
 ### Using Azure Sandbox & Angular site.
 
-[ICanHazDadJoke API](https://ichdadjokeapi.azurewebsites.net/swagger) 
+[ICanHazDadJoke API](https://ichdadjokeapi.azurewebsites.net/swagger).  
 [ICanHazDadJoke Web](https://ichdadjoketeststorage.z19.web.core.windows.net/)
