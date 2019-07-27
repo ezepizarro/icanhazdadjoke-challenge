@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ICHDadJoke.Core
+namespace ICHDadJoke.Core.Extensions
 {
     public static class Extensions
     {

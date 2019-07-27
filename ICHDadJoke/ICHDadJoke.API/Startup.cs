@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using ICHDadJoke.API.Extensions;
 using ICHDadJoke.API.Hubs;
 using ICHDadJoke.Core.Interfaces;
 using ICHDadJoke.Core.Mappings;
@@ -82,7 +83,7 @@ namespace ICHDadJoke.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
         {
             if (env.IsDevelopment())
             {
@@ -107,6 +108,7 @@ namespace ICHDadJoke.API
             {
                 routes.MapHub<JokeHub>("/joke");
             });
+            app.ConfigureExceptionHandler(logger);
             app.UseMvc();
         }
     }

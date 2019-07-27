@@ -10,7 +10,6 @@ namespace ICHDadJoke.Core.Mappings
         public SimpleMappings()
         {
             //Joke
-            //CreateMap<Student, CreateStudentModel>();
         }
     }
 }

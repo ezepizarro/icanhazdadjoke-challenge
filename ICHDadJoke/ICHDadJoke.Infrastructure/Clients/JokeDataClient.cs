@@ -20,10 +20,11 @@ namespace ICHDadJoke.Infrastructure.Clients
 
         public async Task<JokeModel> OnGet()
         {
+            var joke = new JokeModel();
+
             var client = _clientFactory.CreateClient("icanhazdadjoke");
             var request = new HttpRequestMessage(HttpMethod.Get, "");
             var response = await client.SendAsync(request);
-
 
             if (response.IsSuccessStatusCode){
 
@@ -31,14 +32,14 @@ namespace ICHDadJoke.Infrastructure.Clients
                 return JsonConvert.DeserializeObject<JokeModel>(responseString);
             }
 
-            return null;
+            return joke;
         }
         public async Task<SearchResultJokeModel> OnSearch(string term, int limit)
         {
+            var search = new SearchResultJokeModel();
+
             var request = new HttpRequestMessage(HttpMethod.Get,$"search?term={term}&limit={limit}");
-
             var client = _clientFactory.CreateClient("icanhazdadjoke");
-
             var response = await client.SendAsync(request);
 
             if (response.IsSuccessStatusCode)
@@ -48,8 +49,7 @@ namespace ICHDadJoke.Infrastructure.Clients
                 return JsonConvert.DeserializeObject<SearchResultJokeModel>(responseString);
             }
 
-            return null;
+            return search;
         }
-
     }
 }
