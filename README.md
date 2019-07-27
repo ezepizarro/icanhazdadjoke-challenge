@@ -1,5 +1,5 @@
 # I can haz dad joke - challenge
-An api to search and get random jokes
+An api to search and get random jokes 
 A web to display and search jokes
 
 ## Stack
@@ -23,7 +23,5 @@ A web to display and search jokes
 
 ### Using Azure Sandbox & Angular site.
 
-This has the latest commit from master branch
-
-[Using Swagger UI](https://ichdadjokeapi.azurewebsites.net/swagger)
-[Using Angular UI](https://ichdadjoketeststorage.z19.web.core.windows.net/)
+[ICanHazDadJoke API](https://ichdadjokeapi.azurewebsites.net/swagger) 
+[ICanHazDadJoke Web](https://ichdadjoketeststorage.z19.web.core.windows.net/)
