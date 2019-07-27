@@ -8,6 +8,7 @@ using ICHDadJoke.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 
 namespace ICHDadJoke.API.Controllers
 {
@@ -36,7 +37,7 @@ namespace ICHDadJoke.API.Controllers
 
             var joke = await _jokeService.GetRandomJokeAsync();
 
-            _logger.LogInformation($"Returning a random joke: {joke}");
+            _logger.LogInformation($"Returning a random joke:{JsonConvert.SerializeObject(joke)}");
 
             return Ok(joke);
         }
@@ -50,7 +51,7 @@ namespace ICHDadJoke.API.Controllers
 
             var jokes = await _jokeService.SearchAsync(term);
 
-            _logger.LogInformation($"Returning a list of jokes: {jokes}");
+            _logger.LogInformation($"Returning a list of jokes:{JsonConvert.SerializeObject(jokes)}");
 
             return Ok(jokes);
         }
