@@ -36,8 +36,8 @@ export class SearchComponent implements OnInit {
     this.jokeService.searchJokes(form.searchInput)
     .subscribe((data: SearchResponse) => {
       console.log(data);
-      if (data.longJokes.length === 0 || data.mediumJokes.length === 0
-        || data.shortJokes.length === 0 ) {
+      if (data.longJokes.length === 0 && data.mediumJokes.length === 0
+        && data.shortJokes.length === 0 ) {
         this.openDialog();
       }
       this.response = data;
