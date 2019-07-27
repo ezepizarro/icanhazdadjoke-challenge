@@ -13,8 +13,8 @@ A web to display and search jokes.
 - Automapper
 - Global exception handler Middleware
 - Swagger using NSwag.
-- Azure App Services [ICanHazDadJoke API](https://ichdadjokeapi.azurewebsites.net/swagger)  
-- Azure Storage [ICanHazDadJoke Web](https://ichdadjoketeststorage.z19.web.core.windows.net/)  
+- Azure App Services - [ICanHazDadJoke API](https://ichdadjokeapi.azurewebsites.net/swagger)  
+- Azure Storage - [ICanHazDadJoke Web](https://ichdadjoketeststorage.z19.web.core.windows.net/)  
 
 ## Overview
 |API|Description|
@@ -24,5 +24,5 @@ A web to display and search jokes.
 
 ### Using Azure Sandbox & Angular site.
 
-[ICanHazDadJoke API](https://ichdadjokeapi.azurewebsites.net/swagger).  
+[ICanHazDadJoke API](https://ichdadjokeapi.azurewebsites.net/swagger)     
 [ICanHazDadJoke Web](https://ichdadjoketeststorage.z19.web.core.windows.net/)

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { JokeService } from '../joke-service.service';
 import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
 import SearchResponse from '../SearchResponse';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogContentComponent } from '../dialog-content/dialog-content.component';
 
 @Component({
   selector: 'app-search',
@@ -11,7 +13,7 @@ import SearchResponse from '../SearchResponse';
 export class SearchComponent implements OnInit {
   response: SearchResponse = new SearchResponse();
 
-  constructor(private jokeService: JokeService, private formBuilder: FormBuilder) {
+  constructor(private jokeService: JokeService, private formBuilder: FormBuilder, private dialog: MatDialog) {
     this.form = this.formBuilder.group({
       searchInput: new FormControl(''),
     });
@@ -20,11 +22,24 @@ export class SearchComponent implements OnInit {
   step = 0;
   value = 'Clear me';
   form: FormGroup;
+  lastDialogResult: string;
+
+  openDialog() {
+    const dialogRef = this.dialog.open(DialogContentComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.lastDialogResult = result;
+    });
+  }
 
   onSubmit(form) {
     this.jokeService.searchJokes(form.searchInput)
     .subscribe((data: SearchResponse) => {
       console.log(data);
+      if (data.longJokes.length === 0 || data.mediumJokes.length === 0
+        || data.shortJokes.length === 0 ) {
+        this.openDialog();
+      }
       this.response = data;
     });
   }

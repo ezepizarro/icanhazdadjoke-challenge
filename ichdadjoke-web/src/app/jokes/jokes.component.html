@@ -1,11 +1,21 @@
-<div>
-    <h3>Random dad joke (10 seconds - Client timer):</h3>
-</div>
+<div class="app-content">
 <mat-card>
-        <mat-card-content>{{response.joke}}</mat-card-content>
+    <mat-card-content>
+      <h2 class="example-h2">Random Dad Joke (every 10 seconds - Client timer):</h2>
+      <mat-card>
+        <mat-card-content>
+          {{response.joke}}
+        </mat-card-content>
+      </mat-card>
+    </mat-card-content>
 </mat-card>
 
-<div>
-    <h3>Random dad joke (10 seconds - SignalR):</h3>
+<mat-card>
+    <mat-card-content>
+        <h2 class="example-h2">Random Dad Joke (every 10 seconds - SignalR):</h2>
+        <mat-card>
+          <mat-card-content>{{joke.joke}}</mat-card-content>
+        </mat-card>
+      </mat-card-content>
+</mat-card>
 </div>
-<mat-card>{{joke.joke}}</mat-card>

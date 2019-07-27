@@ -1,21 +1,25 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
-    <div class="example-container">
-    <p>
-        <mat-form-field appearance="outline">
+<div class="app-content">
+  <mat-card>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+        <mat-form-field appearance="legacy">
           <mat-label>Search for jokes</mat-label>
-          <input matInput placeholder="dad" formControlName="searchInput">
-          <mat-icon matSuffix>search</mat-icon>
-          <mat-hint>Hint</mat-hint>
+          <input matInput formControlName="searchInput">
         </mat-form-field>
-      </p>
+        <a mat-button class="app-button"(click)="onSubmit(form.value)" mat-raised-button color="warm">
+            <mat-icon matSuffix>search</mat-icon>
+        </a>
+      </form>
+    </mat-card-content>
+  </mat-card>
 </div>
-</form>
-<div *ngIf="response.shortJokes.length > 0">
+
+<div class="app-content" *ngIf="response.shortJokes.length > 0">
   <mat-accordion class="example-headers-align">
   <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Short Jokes ({{response.shortJokes.length}})
+          <h2 class="example-h2">Short Jokes ({{response.shortJokes.length}})</h2>
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-list>
@@ -29,7 +33,7 @@
   <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Medium Jokes ({{response.mediumJokes.length}})
+          <h2 class="example-h2">Medium Jokes ({{response.mediumJokes.length}})</h2>
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-list>
@@ -43,7 +47,7 @@
   <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
     <mat-expansion-panel-header>
       <mat-panel-title>
-        Long Jokes ({{response.longJokes.length}})
+          <h2 class="example-h2">Long Jokes ({{response.longJokes.length}})</h2>
       </mat-panel-title>
     </mat-expansion-panel-header>
     <mat-list>

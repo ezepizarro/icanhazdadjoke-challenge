@@ -6,15 +6,17 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule, MatMenuModule, MatToolbarModule, MatIconModule, MatCardModule
-  , MatDividerModule, MatListModule, MatExpansionModule, MatInputModule } from '@angular/material';
+  , MatDividerModule, MatListModule, MatExpansionModule, MatInputModule, MatDialogModule } from '@angular/material';
 import { JokesComponent } from './jokes/jokes.component';
 import { SearchComponent } from './search/search.component';
+import { DialogContentComponent } from './dialog-content/dialog-content.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JokesComponent,
-    SearchComponent
+    SearchComponent,
+    DialogContentComponent
   ],
   imports: [
     BrowserModule,
@@ -31,8 +33,10 @@ import { SearchComponent } from './search/search.component';
     MatDividerModule,
     MatListModule,
     MatExpansionModule,
-    MatInputModule ],
+    MatInputModule,
+    MatDialogModule ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogContentComponent]
 })
 export class AppModule { }

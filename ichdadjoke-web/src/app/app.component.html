@@ -3,8 +3,12 @@
     <h1>{{title}}</h1>
     <span class="menu-spacer"></span>
     <div>
-      <a mat-button [routerLink]="'/jokes'"> Random joke </a>
-      <a mat-button [routerLink]="'/search'"> Search jokes </a>
+      <a mat-button class="app-button" [routerLink]="'/jokes'" mat-raised-button color="warm"> Random Joke 
+        <mat-icon matSuffix>swap_horiz</mat-icon>
+      </a>
+      <a mat-button class="app-button" [routerLink]="'/search'" mat-raised-button color="warm"> Search Jokes 
+        <mat-icon matSuffix>search</mat-icon>
+      </a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
