@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { JokeServiceService } from './joke-service.service';
+import { JokeService } from './joke-service.service';
 
 describe('JokeServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: JokeServiceService = TestBed.get(JokeServiceService);
+    const service: JokeService = TestBed.get(JokeService);
     expect(service).toBeTruthy();
   });
 });

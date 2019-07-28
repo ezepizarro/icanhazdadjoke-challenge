@@ -6,5 +6,5 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'I can haz dad joke - Challenge |';
+  title = 'I Can Haz Dad Joke';
 }

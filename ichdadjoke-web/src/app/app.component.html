@@ -1,15 +1,13 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <h1>{{title}}</h1>
-    <span class="menu-spacer"></span>
-    <div>
-      <a mat-button class="app-button" [routerLink]="'/jokes'" mat-raised-button color="warm"> Random Joke 
-        <mat-icon matSuffix>swap_horiz</mat-icon>
-      </a>
-      <a mat-button class="app-button" [routerLink]="'/search'" mat-raised-button color="warm"> Search Jokes 
-        <mat-icon matSuffix>search</mat-icon>
-      </a>
-    </div>
+    <span>{{title}}</span>
+    <span class="example-spacer"></span>
+    <a mat-button class="docs-button" [routerLink]="'/jokes'"> Random Joke 
+      <mat-icon matSuffix>swap_horiz</mat-icon>
+    </a>
+    <a mat-button class="docs-button" [routerLink]="'/search'"> Search Jokes 
+      <mat-icon matSuffix>search</mat-icon>
+    </a>
   </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>

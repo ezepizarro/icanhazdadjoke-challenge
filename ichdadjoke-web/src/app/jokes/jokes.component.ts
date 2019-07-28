@@ -12,8 +12,12 @@ import { environment } from '../../environments/environment';
 })
 export class JokesComponent implements OnInit {
   response: Joke = new Joke();
-  joke: Joke = new Joke();
-
+  joke: Joke = {
+    id: "",
+    joke: "Waiting for SignalR message..",
+    status: 0
+  }
+  
   constructor(private jokeService: JokeService) { }
 
   ngOnInit() {
