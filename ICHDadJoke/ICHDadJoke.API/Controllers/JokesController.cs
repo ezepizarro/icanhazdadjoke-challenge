@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using ICHDadJoke.API.Hubs;
 using ICHDadJoke.Core.Interfaces;
+using ICHDadJoke.Core.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
@@ -28,28 +29,38 @@ namespace ICHDadJoke.API.Controllers
             _logger = logger;
         }
 
-        [ProducesResponseType(200)]
-        [ProducesResponseType(500)]
         [HttpGet]
+        [ProducesResponseType(typeof(JokeModel), 200)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(404)]
         public async Task<ActionResult> GetRandomJokeAsync()
         {
             _logger.LogInformation("Getting a random joke");
 
             var joke = await _jokeService.GetRandomJokeAsync();
+            if (joke == null)
+            {
+                return NotFound();
+            }
 
             _logger.LogInformation($"Returning a random joke:{JsonConvert.SerializeObject(joke)}");
 
             return Ok(joke);
         }
 
-        [ProducesResponseType(200)]
-        [ProducesResponseType(500)]
         [HttpGet("Search")]
+        [ProducesResponseType(typeof(SearchJokeModel), 200)]
+        [ProducesResponseType(500)]
+        [ProducesResponseType(404)]
         public async Task<ActionResult> SearchAsync([FromQuery] string term)
         {
             _logger.LogInformation($"Searching for a list of jokes by term: {term}");
 
             var jokes = await _jokeService.SearchAsync(term);
+            if (jokes == null)
+            {
+                return NotFound();
+            }
 
             _logger.LogInformation($"Returning a list of jokes:{JsonConvert.SerializeObject(jokes)}");
 

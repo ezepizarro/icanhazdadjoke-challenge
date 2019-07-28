@@ -26,12 +26,13 @@ namespace ICHDadJoke.Core.Services
         public async Task<SearchJokeModel> SearchAsync(string term)
         {
             var searchList =  await _jokeDataClient.OnSearch(term);
-            if(searchList == null) { return null; } 
+            if(searchList == null) { return null; }
 
             var list = new SearchJokeModel
             {
                 LongJokes = searchList.Results.Where(x => x.Joke.GetWordCount() >= 20).ToList(),
-                MediumJokes = searchList.Results.Where(x => x.Joke.GetWordCount() < 20).ToList(),
+                MediumJokes = searchList.Results.Where(x => x.Joke.GetWordCount() >= 10 &&
+                    x.Joke.GetWordCount() < 20).ToList(),
                 ShortJokes = searchList.Results.Where(x => x.Joke.GetWordCount() < 10).ToList(),
                 Term = term
             };
