@@ -19,8 +19,7 @@ export class SearchComponent implements OnInit {
     });
    }
 
-  step = 0;
-  value = 'Clear me';
+  step = -1;
   form: FormGroup;
   lastDialogResult: string;
 
