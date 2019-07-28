@@ -1,10 +1,14 @@
+<mat-toolbar>
+  <span>Search Jokes</span>
+</mat-toolbar>
 <div class="app-content">
   <mat-card>
     <mat-card-content>
       <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
         <mat-form-field appearance="legacy">
-          <mat-label>Search for jokes</mat-label>
-          <input matInput formControlName="searchInput">
+          <mat-label>Search term</mat-label>
+          <input matInput formControlName="searchInput" placeholder="dad">
+          <mat-error>Term is required</mat-error>
         </mat-form-field>
         <a mat-button class="app-button"(click)="onSubmit(form.value)" mat-raised-button color="warm">
             <mat-icon matSuffix>search</mat-icon>

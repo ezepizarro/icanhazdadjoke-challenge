@@ -1,7 +1,10 @@
+<mat-toolbar>
+    <span>Random Jokes</span>
+</mat-toolbar>
 <div class="app-content">
-<mat-card>
+  <mat-card>
     <mat-card-content>
-      <h2 class="example-h2">Random Dad Joke (every 10 seconds - Client timer):</h2>
+      <h2 class="example-h2">Client update - every 10 seconds</h2>
       <mat-card>
         <mat-card-content>
           {{response.joke}}
@@ -12,7 +15,7 @@
 
 <mat-card>
     <mat-card-content>
-        <h2 class="example-h2">Random Dad Joke (every 10 seconds - SignalR):</h2>
+        <h2 class="example-h2">SignalR update - every 10 seconds</h2>
         <mat-card>
           <mat-card-content>{{joke.joke}}</mat-card-content>
         </mat-card>

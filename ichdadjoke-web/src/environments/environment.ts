@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiSignalREndpoint: 'https://localhost:44388/joke',
-  apiEndpoint: 'https://localhost:44388/api'
+  apiSignalREndpoint: 'http://localhost:50121/joke',
+  apiEndpoint: 'http://localhost:50121/api'
 };
 
 /*

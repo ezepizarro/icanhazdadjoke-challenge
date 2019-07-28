@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JokeService } from '../joke-service.service';
-import { FormGroup, FormControl, FormArray, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import SearchResponse from '../SearchResponse';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogContentComponent } from '../dialog-content/dialog-content.component';
@@ -15,7 +15,7 @@ export class SearchComponent implements OnInit {
 
   constructor(private jokeService: JokeService, private formBuilder: FormBuilder, private dialog: MatDialog) {
     this.form = this.formBuilder.group({
-      searchInput: new FormControl(''),
+      searchInput: new FormControl('', [Validators.required]),
     });
    }
 
@@ -32,6 +32,12 @@ export class SearchComponent implements OnInit {
   }
 
   onSubmit(form) {
+
+    if(form.searchInput === ''){
+      this.openDialog();
+      return;
+    }
+
     this.jokeService.searchJokes(form.searchInput)
     .subscribe((data: SearchResponse) => {
       console.log(data);
@@ -39,6 +45,7 @@ export class SearchComponent implements OnInit {
         && data.shortJokes.length === 0 ) {
         this.openDialog();
       }
+      this.step = -1;
       this.response = data;
     });
   }
@@ -49,6 +56,9 @@ export class SearchComponent implements OnInit {
     });
   }
 
+  public hasError = (controlName: string, errorName: string) =>{
+    return this.form.controls[controlName].hasError(errorName);
+  }
   setStep(index: number) {
     this.step = index;
   }
